@@ -13,6 +13,7 @@ import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import HomePage from "./pages/HomePage";
 import Reviews from "./pages/Reviews";
+import Detail from "./pages/Detail";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
         {isLoading ? <Loading /> : null}
         <Routes>
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/detail/:id" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route exact path="/" element={<HomePage />} />

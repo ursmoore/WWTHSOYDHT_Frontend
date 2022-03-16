@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLocations } from "../store/locations/actions";
 import { selectLocations } from "../store/locations/selectors";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Reviews() {
   const dispatch = useDispatch();
@@ -22,12 +23,12 @@ export default function Reviews() {
         <p>no reviews found</p>
       ) : (
         location.map((rev, index) => {
-          return <ReviewCard key={index} title={rev.title} image={rev.image} />;
+          return <ReviewCard key={index} name={rev.name} image={rev.image} />;
         })
       )}
-      <NavLink className={"detail"} to={`/detail/${id}`}>
+      <Link className={"detail"} to={`/detail/${id}`}>
         detail
-      </NavLink>
+      </Link>
     </div>
   );
 }
