@@ -7,6 +7,7 @@ import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import DetailsPage from "./pages/DetailsPage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -31,6 +32,7 @@ function App() {
         {isLoading ? <Loading /> : null}
         <Routes>
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/details" element={<DetailsPage />} />
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/reviews" element={<Reviews />} />
