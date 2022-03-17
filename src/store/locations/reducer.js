@@ -11,6 +11,16 @@ export default function reducer(state = initialState, action) {
       };
     }
 
+    /*     case "locations/dislikesUpdated": {
+      return {
+        ...state,
+        location: {
+          ...state.location,
+          dislikes: action.payload,
+        },
+      };
+    }
+ */
     default: {
       return state;
     }
