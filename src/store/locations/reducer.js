@@ -1,6 +1,6 @@
 const initialState = {
   location: [],
-  locationDetails: [],
+  locationDetails: null,
 };
 
 export default function reducer(state = initialState, action) {

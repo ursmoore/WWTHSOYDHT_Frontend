@@ -14,6 +14,23 @@ export async function getLocations(dispatch, getState) {
   dispatch(setLocations(response.data));
 }
 
+//Dislike button set
+export const dislikeUpdated = (dislikes) => ({
+  type: "locations/dislikesUpdated",
+  payload: dislikes,
+});
+
+export function updateDislikes(id, dislikes) {
+  return async function thunk(dispatch, getState) {
+    const response = await axios.patch(`${apiUrl}/location/${id}`, {
+      dislikes,
+    });
+    console.log("updateDislikes", response.data);
+
+    dispatch(dislikeUpdated(dislikes));
+  };
+}
+
 //GOT ONE LOCATION BY ID
 export function locationByIdFetched(data) {
   return {
@@ -28,7 +45,6 @@ export function fetchLocationById(id) {
     try {
       const response = await axios.get(`${apiUrl}/location/${id}`);
 
-      console.log("fetch location by id response", response.data);
       dispatch(locationByIdFetched(response.data));
     } catch (e) {
       console.log(e);
