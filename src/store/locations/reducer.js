@@ -1,5 +1,6 @@
 const initialState = {
   location: [],
+  locationDetails: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -12,15 +13,23 @@ export default function reducer(state = initialState, action) {
     }
 
     /*     case "locations/dislikesUpdated": {
+        return {
+          ...state,
+          location: {
+            ...state.location,
+            dislikes: action.payload,
+          },
+        };
+      }
+   */
+
+    case "location/getLocationById": {
       return {
         ...state,
-        location: {
-          ...state.location,
-          dislikes: action.payload,
-        },
+        locationDetails: { ...action.payload },
       };
     }
- */
+
     default: {
       return state;
     }
