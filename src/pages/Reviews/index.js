@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import ReviewCard from "../components/ReviewCard";
+import ReviewCard from "../../components/ReviewCard";
 import { NavLink } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getLocations } from "../store/locations/actions";
-import { selectLocations } from "../store/locations/selectors";
+import { getLocations } from "../../store/locations/actions";
+import { selectLocations } from "../../store/locations/selectors";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -15,7 +15,7 @@ export default function Reviews() {
   useEffect(() => {
     dispatch(getLocations);
   }, [dispatch]);
-  console.log("what is", location);
+  // console.log("what is", location);
 
   return (
     <div className="reviews-wrap">
