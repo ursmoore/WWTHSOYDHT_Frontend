@@ -15,11 +15,11 @@ export default function ProfilePage() {
 
   useEffect(() => {
     dispatch(getDetailPost(id));
-  }, [dispatch, id]);git status
+  }, [dispatch, id]);
 
   console.log("what is locations", location);
 
-  return location.length < 1 ? (
+  return location.length ? (
     <p>loading</p>
   ) : (
     <>

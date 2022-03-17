@@ -35,3 +35,25 @@ export function getDetailPost(id) {
     }
   };
 }
+
+//GOT ONE LOCATION BY ID
+export function locationByIdFetched(data) {
+  return {
+    type: "location/getLocationById",
+    payload: data,
+  };
+}
+
+//GET LOCATION BY ID
+export function fetchLocationById(id) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${apiUrl}/location/${id}`);
+
+      console.log("fetch location by id response", response.data);
+      dispatch(locationByIdFetched(response.data));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
