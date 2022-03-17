@@ -1,44 +1,42 @@
 import React, { useEffect } from "react";
+/* import ReviewCard from "../../components/ReviewCard"; */
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
-import ReviewCard from "../../components/ReviewCard";
-import { getDetailPost } from "../../store/locations/actions";
+import { getLocations } from "../../store/locations/actions";
 import { selectLocations } from "../../store/locations/selectors";
-
+import { Link } from "react-router-dom";
 import { selectUser } from "../../store/user/selectors";
 
-export default function ProfilePage() {
+export default function Reviews() {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
   const location = useSelector(selectLocations);
-  const { id } = useParams();
+  const user = useSelector(selectUser);
+
+  const myLocation = location
+    ? location.filter((loc) => loc.user.email === user.email)
+    : [];
 
   useEffect(() => {
-    dispatch(getDetailPost(id));
-  }, [dispatch, id]);
+    dispatch(getLocations);
+  }, [dispatch]);
+  console.log("location", location);
 
-  console.log("what is locations", location);
+  return (
+    <div>
+      {myLocation.length < 1
+        ? "Loading"
+        : myLocation.map((loc) => {
+            return (
+              <div key={loc.id}>
+                <h3>{loc.name}</h3>
+                <img src={loc.image} alt={loc.name} width={500} />
 
-  return location.length ? (
-    <p>loading</p>
-  ) : (
-    <>
-      <h1>{user.name}</h1>
-      <ReviewCard
-        id={location.id}
-        name={location.name}
-        image={location.image}
-        dislike={location.dislike}
-        description={location.description}
-        latitude={location.latitude}
-        longtitude={location.longtitude}
-      />
-      <hr />
-      <div className="create-post-link">
-        <NavLink style={{ textDecoration: "none" }} to={"/editPage"}>
-          <h4>Edit page</h4>
-        </NavLink>
-      </div>
-    </>
+                <Link to={`/details/${loc.id}`}>
+                  <button>Viev Details</button>
+                </Link>
+                <p>👎-{loc.dislikes}</p>
+              </div>
+            );
+          })}
+    </div>
   );
 }
