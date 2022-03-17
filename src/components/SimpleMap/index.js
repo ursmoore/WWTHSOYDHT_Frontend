@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+/* import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const SimpleMap = () => {
   return (
@@ -32,3 +32,4 @@ const SimpleMap = () => {
 };
 
 export default SimpleMap;
+ */
