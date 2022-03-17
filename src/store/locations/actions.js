@@ -7,11 +7,11 @@ export const setLocations = (data) => ({
   payload: data,
 });
 
-//SET ONE LOCATION
+/* //SET ONE LOCATION
 export const setLocation = (data) => ({
   type: "SET/location",
   payload: data,
-});
+}); */
 
 //GET ALL LOCATIONS
 export async function getLocations(dispatch, getState) {
@@ -23,7 +23,7 @@ export async function getLocations(dispatch, getState) {
     console.log("No locations found");
   }
 }
-
+/* 
 //GET DETAILED LOCATION
 export function getDetailPost(id) {
   return async function thunk(dispatch, getState) {
@@ -35,7 +35,7 @@ export function getDetailPost(id) {
     }
   };
 }
-
+ */
 //Dislike button set
 
 /* export const dislikeUpdated = (dislikes) => ({

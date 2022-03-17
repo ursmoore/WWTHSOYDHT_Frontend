@@ -31,7 +31,7 @@ const DetailsPage = () => {
       <p>{description}</p>
       <img src={image} alt={name} />
       <p>{dislikes}</p>
-      {comments.map((post) => {
+      {comments?.map((post) => {
         return <div>{post.text}</div>;
       })}
     </div>
