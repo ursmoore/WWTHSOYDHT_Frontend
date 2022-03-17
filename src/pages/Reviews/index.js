@@ -1,34 +1,45 @@
 import React, { useEffect } from "react";
-import ReviewCard from "../../components/ReviewCard";
-import { NavLink } from "react-bootstrap";
+/* import ReviewCard from "../../components/ReviewCard"; */
 import { useDispatch, useSelector } from "react-redux";
 import { getLocations } from "../../store/locations/actions";
 import { selectLocations } from "../../store/locations/selectors";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { updateDislikes } from "../../store/locations/actions";
+import { useParams } from "react-router-dom";
 
 export default function Reviews() {
   const dispatch = useDispatch();
   const location = useSelector(selectLocations);
-  const { id } = useParams;
 
   useEffect(() => {
     dispatch(getLocations);
   }, [dispatch]);
-  // console.log("what is", location);
+  console.log("location", location);
 
   return (
-    <div className="reviews-wrap">
-      {location.length === 0 ? (
-        <p>no reviews found</p>
-      ) : (
-        location.map((rev, index) => {
-          return <ReviewCard key={index} name={rev.name} image={rev.image} />;
-        })
-      )}
-      <Link className={"detail"} to={`/detail/${id}`}>
-        detail
-      </Link>
+    <div>
+      {location.length < 1
+        ? "Loading"
+        : location.map((loc) => {
+            return (
+              <div key={loc.id}>
+                <h3>{loc.name}</h3>
+                <img src={loc.image} alt={loc.name} width={500} />
+
+                <Link to={`/details/${loc.id}`}>
+                  <button>Viev Details</button>
+                </Link>
+                <p>👎-{loc.dislikes}</p>
+                {/*  <button
+                  onClick={() => {
+                    dispatch(updateDislikes(id, loc.dislikes + 1));
+                  }}
+                >
+                  Dislike
+                </button> */}
+              </div>
+            );
+          })}
     </div>
   );
 }

@@ -36,6 +36,25 @@ export function getDetailPost(id) {
   };
 }
 
+//Dislike button set
+
+/* export const dislikeUpdated = (dislikes) => ({
+  type: "locations/dislikesUpdated",
+  payload: dislikes,
+});
+
+export function updateDislikes(id, dislikes) {
+  return async function thunk(dispatch, getState) {
+    const response = await axios.patch(`${apiUrl}/location/${id}`, {
+      dislikes,
+    });
+    console.log("updateDislikes", response.data);
+
+    dispatch(dislikeUpdated(dislikes));
+  };
+}
+ */
+
 //GOT ONE LOCATION BY ID
 export function locationByIdFetched(data) {
   return {
