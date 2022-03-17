@@ -10,10 +10,12 @@ import Login from "./pages/Login";
 import DetailsPage from "./pages/DetailsPage";
 import HomePage from "./pages/HomePage";
 import Reviews from "./pages/Reviews";
+import ProfilePage from "./pages/ProfilePage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,15 +29,19 @@ function App() {
     <div>
       <Navigation />
       <MessageBox />
-      <div className="main">
-        {isLoading ? <Loading /> : null}
-        <Routes>
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/details/:id" element={<DetailsPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route exact path="/" element={<HomePage />} />
-        </Routes>
+      <div>
+        <div className="main">
+          {isLoading ? <Loading /> : null}
+          <Routes>
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/details/:id" element={<DetailsPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route exact path="/" element={<HomePage />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </div>
   );

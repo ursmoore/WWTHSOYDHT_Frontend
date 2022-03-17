@@ -7,9 +7,31 @@ export const setLocations = (data) => ({
   payload: data,
 });
 
+//SET ONE LOCATION
+export const setLocation = (data) => ({
+  type: "SET/location",
+  payload: data,
+});
+
 //GET ALL LOCATIONS
 export async function getLocations(dispatch, getState) {
-  const response = await axios.get(`${apiUrl}/locations`);
-  console.log("Im getting locations data back", response);
-  dispatch(setLocations(response.data));
+  try {
+    const response = await axios.get(`${apiUrl}/locations`);
+    console.log("Im getting locations data back", response);
+    dispatch(setLocations(response.data));
+  } catch (error) {
+    console.log("No locations found");
+  }
+}
+
+//GET DETAILED LOCATION
+export function getDetailPost(id) {
+  return async function thunk(dispatch, getState) {
+    try {
+      const response = await axios.get(`${apiUrl}/location/${id}`);
+      dispatch(setLocation(response.data));
+    } catch (error) {
+      console.log("No data found");
+    }
+  };
 }
