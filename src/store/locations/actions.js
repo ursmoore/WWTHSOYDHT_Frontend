@@ -1,6 +1,9 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
 
+import { selectUser } from "../user/selectors";
+import { showMessageWithTimeout } from "../appState/actions";
+
 //SET ALL LOCATIONS
 export const setLocations = (data) => ({
   type: "SET/locations",
@@ -12,6 +15,12 @@ export const setLocation = (data) => ({
   type: "SET/location",
   payload: data,
 }); */
+
+//SET POST COMMENTS
+export const setComments = (data) => ({
+  type: "SET/comments",
+  payload: data,
+});
 
 //GET ALL LOCATIONS
 export async function getLocations(dispatch, getState) {
@@ -73,6 +82,42 @@ export function fetchLocationById(id) {
       dispatch(locationByIdFetched(response.data));
     } catch (e) {
       console.log(e);
+    }
+  };
+}
+
+//GET COMMENTS
+export function getComments(id) {
+  return async function thunk(dispatch, getState) {
+    try {
+      const response = await axios.get(`${apiUrl}/post/${id}/comments`);
+      dispatch(setComments(response.data));
+    } catch (error) {}
+    console.log("No comments data found");
+  };
+}
+
+//POST COMMENT
+export function createComment(locationId, text) {
+  return async function thunk(dispatch, getState) {
+    const { token } = selectUser(getState());
+    const response = await axios.post(
+      `${apiUrl}/comments`,
+      {
+        locationId,
+        text,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (response.data) {
+      dispatch(
+        showMessageWithTimeout("success", false, "Comment placed!", 2500)
+      );
+      dispatch(fetchLocationById(locationId));
     }
   };
 }
