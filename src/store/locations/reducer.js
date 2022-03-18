@@ -29,6 +29,13 @@ export default function reducer(state = initialState, action) {
       };
     }
 
+    case "location/postNewExperience": {
+      console.log("what is payload", action.payload);
+      return {
+        ...state,
+      };
+    }
+
     default: {
       return state;
     }

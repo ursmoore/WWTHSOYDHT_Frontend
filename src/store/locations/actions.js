@@ -85,6 +85,46 @@ export function fetchLocationById(id) {
   };
 }
 
+
+// CREATE NEW BAD EXPERIENCE
+export function postNewExperience(data) {
+  return {
+    type: "location/postNewExperience",
+    payload: data,
+  };
+}
+
+export function newExperiencePosted(
+  name,
+  image,
+  description,
+  latitude,
+  longtitude,
+  experience
+) {
+  return async function thunk(dispatch, getstate) {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.post(
+        `${apiUrl}/locations`,
+        {
+          name,
+          image,
+          description,
+          latitude,
+          longtitude,
+          experience,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log("what is response", response.data);
+      dispatch(postNewExperience(response.data));
+    } catch (e) {
+      console.log(e);
+
 //GET COMMENTS
 export function getComments(id) {
   return async function thunk(dispatch, getState) {
@@ -117,6 +157,7 @@ export function createComment(locationId, text) {
         showMessageWithTimeout("success", false, "Comment placed!", 2500)
       );
       dispatch(fetchLocationById(locationId));
+
     }
   };
 }
