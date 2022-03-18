@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 /* import ReviewCard from "../../components/ReviewCard"; */
 import { useDispatch, useSelector } from "react-redux";
-import { getLocations } from "../../store/locations/actions";
+import { deletePost, getLocations } from "../../store/locations/actions";
 import { selectLocations } from "../../store/locations/selectors";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../store/user/selectors";
+import ReviewCard from "../../components/ReviewCard";
 
 export default function Reviews() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export default function Reviews() {
         ? "Loading"
         : myLocation.map((loc) => {
             return (
-              <div key={loc.id}>
+              <div key={loc.locationId}>
                 <h3 className="title">{loc.name}</h3>
                 <img
                   className="image"
@@ -34,8 +35,9 @@ export default function Reviews() {
                   alt={loc.name}
                   width={500}
                 />
+                <ReviewCard locationId={loc.id} />
 
-                <Link to={`/details/${loc.id}`}>
+                <Link to={`/details/${loc.locationId}`}>
                   <button>Unfortunate Details ಠ__ಠ </button>
                 </Link>
                 <p>👎-{loc.dislikes}</p>

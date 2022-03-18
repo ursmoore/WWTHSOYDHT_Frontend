@@ -120,3 +120,23 @@ export function createComment(locationId, text) {
     }
   };
 }
+
+//DELETE ONE POST AS AN ADMIN
+export function deletePost(id) {
+  return async function thunk(dispatch, getState) {
+    const { token } = selectUser(getState());
+    try {
+      const response = await axios.delete(`${apiUrl}/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.data.success) {
+        console.log("Review deleted", response);
+        dispatch(getLocations());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
