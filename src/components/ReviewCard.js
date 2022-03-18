@@ -2,10 +2,15 @@ import React from "react";
 
 export default function ReviewCard(props) {
   return (
-    <div>
+    <div className="review-card">
       <p>{props.id}</p>
-      <h1>{props.name}</h1>
-      <img src={props.image} alt="reviewIMG" />
+      <h1 className="title">{props.name}</h1>
+      <div
+        className="image"
+        style={{
+          backgroundImage: `url(${props.imageUrl})`,
+        }}
+      ></div>
       <p>{props.dislike}</p>
       <p>{props.description}</p>
       <p>{props.latitude}</p>

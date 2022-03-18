@@ -15,17 +15,21 @@ export default function Reviews() {
   console.log("location", location);
 
   return (
-    <div>
+    <div className="review">
       {location?.length < 1
         ? "Loading"
         : location?.map((loc) => {
             return (
               <div key={loc?.id}>
-                <h3>{loc?.name}</h3>
-                <img src={loc?.image} alt={loc?.name} width={500} />
-
+                <h3 className="title">{loc?.name}</h3>
+                <div
+                  className="image"
+                  style={{
+                    backgroundImage: `url(${loc?.image})`,
+                  }}
+                ></div>
                 <Link to={`/details/${loc?.id}`}>
-                  <button>Viev Details</button>
+                  <button>Unfortunate Details ಠ__ಠ </button>
                 </Link>
                 <p>👎-{loc?.dislikes}</p>
                 {/*  <button
