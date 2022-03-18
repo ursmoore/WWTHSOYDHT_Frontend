@@ -69,7 +69,7 @@ const DetailsPage = () => {
           </Marker>
         </MapContainer>
       </>
- 
+
       {/* <h3>{description}</h3>
       <img src={image} alt={name} width={600} /> */}
       <div>
@@ -89,7 +89,6 @@ const DetailsPage = () => {
 
       <h3>{description}</h3>
       <img src={image} alt={name} width={600} />
-      <p>🖤 - {dislikes}</p>
 
       <div>
         <CommentForm />
@@ -107,7 +106,6 @@ const DetailsPage = () => {
             );
           })}
       </div>
-
     </div>
   );
 };
