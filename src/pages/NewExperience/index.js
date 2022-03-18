@@ -39,9 +39,17 @@ const NewExperience = () => {
 
   if (!user) return <h2>Loading...</h2>;
   return (
-    <>
+    <div>
       <h1>NEW BAD EXPERIENCE</h1>
-      <form onSubmit={handleSubmitExperience}>
+      <form
+        onSubmit={handleSubmitExperience}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          marginBottom: "20px",
+        }}
+      >
         <label>NAME:</label>
         <input
           value={name}
@@ -55,20 +63,20 @@ const NewExperience = () => {
           type="text"
         ></input>
         <img src={image} alt={""} width={300} />
-        <div>
-          <label>DESCRIPTION:</label>
-          <textarea
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-            type="text"
-          ></textarea>
-          <label>EXPERIENCE:</label>
-          <textarea
-            value={experience}
-            onChange={(event) => setExperience(event.target.value)}
-            type="text"
-          ></textarea>
-        </div>
+
+        <label>DESCRIPTION:</label>
+        <textarea
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+          type="text"
+        ></textarea>
+        <label>EXPERIENCE:</label>
+        <textarea
+          value={experience}
+          onChange={(event) => setExperience(event.target.value)}
+          type="text"
+        ></textarea>
+
         <label>Latitude:</label>
         <input
           value={latitude}
@@ -83,8 +91,10 @@ const NewExperience = () => {
         ></input>
         <button type="submit"> SHARE YOUR SHITTY EXPERIENCE HERE</button>
       </form>
-      <CreateMarker />
-    </>
+      <div style={{ margin: "0px" }}>
+        <CreateMarker />
+      </div>
+    </div>
   );
 };
 
