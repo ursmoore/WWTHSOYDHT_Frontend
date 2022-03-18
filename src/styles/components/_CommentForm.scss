@@ -1,0 +1,35 @@
+.CommentForm {
+  .icon {
+    height: 40px;
+    width: 40px;
+  }
+
+  .form-wrap {
+    padding-bottom: 0.5rem;
+    position: relative;
+
+    .emoji-icon {
+      cursor: pointer;
+      position: absolute;
+      background: transparent;
+      outline: none;
+      border: none;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .form-control {
+    margin: 0;
+    display: initial;
+  }
+
+  .emoji-picker {
+    border: 1px solid red;
+  }
+
+  #btn-two {
+    margin-left: 0.5rem;
+    background-color: rgb(240, 106, 106);
+  }
+}

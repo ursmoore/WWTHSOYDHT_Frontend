@@ -7,6 +7,8 @@ import { fetchLocationById } from "../../store/locations/actions";
 import { selectLocationDetails } from "../../store/locations/selectors";
 import { updateDislikes } from "../../store/locations/actions";
 import { useParams } from "react-router-dom";
+import CommentCard from "../../components/CommentCard";
+import CommentForm from "../../components/CommentForm";
 
 const DetailsPage = () => {
   const dispatch = useDispatch();
@@ -67,6 +69,7 @@ const DetailsPage = () => {
           </Marker>
         </MapContainer>
       </>
+ 
       {/* <h3>{description}</h3>
       <img src={image} alt={name} width={600} /> */}
       <div>
@@ -83,6 +86,28 @@ const DetailsPage = () => {
       {comments?.map((post) => {
         return <div key={post.id}>{post.text}</div>;
       })}
+
+      <h3>{description}</h3>
+      <img src={image} alt={name} width={600} />
+      <p>🖤 - {dislikes}</p>
+
+      <div>
+        <CommentForm />
+        {details.comments.length > 0 &&
+          details.comments.map((comment, index) => {
+            return (
+              <CommentCard
+                key={index}
+                id={comment.id}
+                text={comment.text}
+                comment={comment.comment}
+                userName={comment.userName}
+                createdAt={comment.createdAt}
+              />
+            );
+          })}
+      </div>
+
     </div>
   );
 };
