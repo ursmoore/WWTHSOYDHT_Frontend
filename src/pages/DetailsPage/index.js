@@ -72,20 +72,6 @@ const DetailsPage = () => {
 
       {/* <h3>{description}</h3>
       <img src={image} alt={name} width={600} /> */}
-      <div>
-        <p>🖤 - {dislikes}</p>
-        <button
-          onClick={() => {
-            dispatch(updateDislikes(id, dislikes + 1));
-          }}
-        >
-          Thumps down
-        </button>
-      </div>
-      {/* <p>{experience}</p> */}
-      {comments?.map((post) => {
-        return <div key={post.id}>{post.text}</div>;
-      })}
 
       <h3>{description}</h3>
       <img src={image} alt={name} width={600} />
@@ -105,6 +91,16 @@ const DetailsPage = () => {
               />
             );
           })}
+        <div>
+          <p>🖤 - {dislikes}</p>
+          <button
+            onClick={() => {
+              dispatch(updateDislikes(id, dislikes + 1));
+            }}
+          >
+            Thumps down
+          </button>
+        </div>
       </div>
     </div>
   );
