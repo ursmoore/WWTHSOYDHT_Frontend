@@ -34,7 +34,6 @@ const DetailsPage = () => {
     description,
     image,
     dislikes,
-    comments,
     experience,
     latitude,
     longtitude,
@@ -75,8 +74,8 @@ const DetailsPage = () => {
 
       <h3>{description}</h3>
       <img src={image} alt={name} width={600} />
-
       <div>
+        <br />
         <CommentForm />
         {details.comments.length > 0 &&
           details.comments.map((comment, index) => {

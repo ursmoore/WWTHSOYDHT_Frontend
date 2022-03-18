@@ -1,0 +1,18 @@
+.review {
+  display: block;
+  margin-bottom: 1.5rem;
+
+  .title {
+    display: inline-block;
+  }
+
+  .image {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+  }
+}
