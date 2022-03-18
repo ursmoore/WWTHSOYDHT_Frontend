@@ -11,6 +11,7 @@ import DetailsPage from "./pages/DetailsPage";
 import HomePage from "./pages/HomePage";
 import Reviews from "./pages/Reviews";
 import ProfilePage from "./pages/ProfilePage";
+import NewExperience from "./pages/NewExperience";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -35,6 +36,7 @@ function App() {
           <Routes>
             <Route path="/signup" element={<SignUp />} />
             <Route path="/details/:id" element={<DetailsPage />} />
+            <Route path="/newExperience" element={<NewExperience />} />
             <Route path="/login" element={<Login />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/profile" element={<ProfilePage />} />
