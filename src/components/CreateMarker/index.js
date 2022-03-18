@@ -1,4 +1,18 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useEffect, useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
+
+const MapHandler = () => {
+  const map = useMapEvents({
+    click: (e) => console.log(e.latlng),
+  });
+  return null;
+};
 
 const location = [52.3881519, 4.8217855];
 
@@ -21,12 +35,12 @@ const CreateMarker = () => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
-        <Marker position={location}>
+        <MapHandler />
+        {/* <Marker position={location}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
-        </Marker>
+        </Marker> */}
       </MapContainer>
     </>
   );
