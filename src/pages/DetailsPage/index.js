@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 import { fetchLocationById } from "../../store/locations/actions";
 import { selectLocationDetails } from "../../store/locations/selectors";
+import { updateDislikes } from "../../store/locations/actions";
 import { useParams } from "react-router-dom";
 
 const DetailsPage = () => {
@@ -68,7 +69,16 @@ const DetailsPage = () => {
       </>
       {/* <h3>{description}</h3>
       <img src={image} alt={name} width={600} /> */}
-      <p>🖤 - {dislikes}</p>
+      <div>
+        <p>🖤 - {dislikes}</p>
+        <button
+          onClick={() => {
+            dispatch(updateDislikes(id, dislikes + 1));
+          }}
+        >
+          Thumps down
+        </button>
+      </div>
       {/* <p>{experience}</p> */}
       {comments?.map((post) => {
         return <div key={post.id}>{post.text}</div>;
