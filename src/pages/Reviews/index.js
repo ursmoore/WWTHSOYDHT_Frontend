@@ -25,7 +25,7 @@ export default function Reviews() {
                 <img src={loc?.image} alt={loc?.name} width={500} />
 
                 <Link to={`/details/${loc?.id}`}>
-                  <button>Viev Details</button>
+                  <button>Unfortunate Details ಠ__ಠ </button>
                 </Link>
                 <p>👎-{loc?.dislikes}</p>
                 {/*  <button

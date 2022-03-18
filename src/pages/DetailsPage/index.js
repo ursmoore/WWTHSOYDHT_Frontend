@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 import { fetchLocationById } from "../../store/locations/actions";
 import { selectLocationDetails } from "../../store/locations/selectors";
+import { updateDislikes } from "../../store/locations/actions";
 import { useParams } from "react-router-dom";
 import CommentCard from "../../components/CommentCard";
 import CommentForm from "../../components/CommentForm";
@@ -68,6 +69,24 @@ const DetailsPage = () => {
           </Marker>
         </MapContainer>
       </>
+ 
+      {/* <h3>{description}</h3>
+      <img src={image} alt={name} width={600} /> */}
+      <div>
+        <p>🖤 - {dislikes}</p>
+        <button
+          onClick={() => {
+            dispatch(updateDislikes(id, dislikes + 1));
+          }}
+        >
+          Thumps down
+        </button>
+      </div>
+      {/* <p>{experience}</p> */}
+      {comments?.map((post) => {
+        return <div key={post.id}>{post.text}</div>;
+      })}
+
       <h3>{description}</h3>
       <img src={image} alt={name} width={600} />
       <p>🖤 - {dislikes}</p>
@@ -88,6 +107,7 @@ const DetailsPage = () => {
             );
           })}
       </div>
+
     </div>
   );
 };

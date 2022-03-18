@@ -47,7 +47,7 @@ export function getDetailPost(id) {
  */
 //Dislike button set
 
-/* export const dislikeUpdated = (dislikes) => ({
+export const dislikeUpdated = (dislikes) => ({
   type: "locations/dislikesUpdated",
   payload: dislikes,
 });
@@ -62,7 +62,6 @@ export function updateDislikes(id, dislikes) {
     dispatch(dislikeUpdated(dislikes));
   };
 }
- */
 
 //GOT ONE LOCATION BY ID
 export function locationByIdFetched(data) {
