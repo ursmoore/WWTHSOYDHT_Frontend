@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 /* import ReviewCard from "../../components/ReviewCard"; */
 import { useDispatch, useSelector } from "react-redux";
-import { getLocations } from "../../store/locations/actions";
+import { deletePost, getLocations } from "../../store/locations/actions";
 import { selectLocations } from "../../store/locations/selectors";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../store/user/selectors";
+import ReviewCard from "../../components/ReviewCard";
 
 export default function Reviews() {
   const dispatch = useDispatch();
@@ -21,17 +22,23 @@ export default function Reviews() {
   console.log("location", location);
 
   return (
-    <div>
+    <div className="review">
       {myLocation.length < 1
-        ? "Loading"
+        ? "No images"
         : myLocation.map((loc) => {
             return (
-              <div key={loc.id}>
-                <h3>{loc.name}</h3>
-                <img src={loc.image} alt={loc.name} width={500} />
+              <div key={loc.locationId}>
+                <h3 className="title">{loc.name}</h3>
+                <img
+                  className="image"
+                  src={loc.image}
+                  alt={loc.name}
+                  width={500}
+                />
+                <ReviewCard locationId={loc.id} />
 
-                <Link to={`/details/${loc.id}`}>
-                  <button>Viev Details</button>
+                <Link to={`/details/${loc.locationId}`}>
+                  <button>Unfortunate Details ಠ__ಠ </button>
                 </Link>
                 <p>👎-{loc.dislikes}</p>
               </div>

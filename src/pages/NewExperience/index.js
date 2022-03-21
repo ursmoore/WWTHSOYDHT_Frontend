@@ -50,43 +50,53 @@ const NewExperience = () => {
 
   if (!user) return <h2>Loading...</h2>;
   return (
-    <>
-      <div>
-        <h1>NEW BAD EXPERIENCE</h1>
-        <form onSubmit={handleSubmitExperience}>
-          <label>NAME:</label>
-          <input
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            type="text"
-          ></input>
-          <label>IMAGE:</label>
-          <input
-            value={image}
-            onChange={(event) => setImage(event.target.value)}
-            type="text"
-          ></input>
-          <img src={image} alt={""} width={300} />
-          <div>
-            <label>DESCRIPTION:</label>
-            <textarea
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
-              type="text"
-            ></textarea>
-            <label>EXPERIENCE:</label>
-            <textarea
-              value={experience}
-              onChange={(event) => setExperience(event.target.value)}
-              type="text"
-            ></textarea>
-          </div>
-          <button type="submit"> SHARE YOUR SHITTY EXPERIENCE HERE</button>
-        </form>
+
+   
+
+    <div>
+      <h1>NEW BAD EXPERIENCE</h1>
+      <form
+        onSubmit={handleSubmitExperience}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          marginBottom: "20px",
+        }}
+      >
+        <label>NAME:</label>
+        <input
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          type="text"
+        ></input>
+        <label>IMAGE:</label>
+        <input
+          value={image}
+          onChange={(event) => setImage(event.target.value)}
+          type="text"
+        ></input>
+        <img src={image} alt={""} width={300} />
+
+        <label>DESCRIPTION:</label>
+        <textarea
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+          type="text"
+        ></textarea>
+        <label>EXPERIENCE:</label>
+        <textarea
+          value={experience}
+          onChange={(event) => setExperience(event.target.value)}
+          type="text"
+        ></textarea>
+        <button type="submit"> SHARE YOUR SHITTY EXPERIENCE HERE</button>
+      </form>
+      <div style={{ margin: "0px" }}>
+        <CreateMarker />
+        <button onClick={confirmLocation}>Confirm Selection</button>
       </div>
-      <CreateMarker />
-      <button onClick={confirmLocation}>Confirm Selection</button>
-    </>
+    </div>
   );
 };
 

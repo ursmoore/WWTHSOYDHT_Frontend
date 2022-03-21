@@ -23,8 +23,6 @@ export default function HomePage() {
           1.10.33 of "de Finibus Bonorum
         </p>
       </div>
-
-      <footer>footer</footer>
     </div>
   );
 }
