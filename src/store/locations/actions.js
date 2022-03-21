@@ -85,7 +85,6 @@ export function fetchLocationById(id) {
   };
 }
 
-
 // CREATE NEW BAD EXPERIENCE
 export function postNewExperience(data) {
   return {
@@ -124,6 +123,9 @@ export function newExperiencePosted(
       dispatch(postNewExperience(response.data));
     } catch (e) {
       console.log(e);
+    }
+  };
+}
 
 //GET COMMENTS
 export function getComments(id) {
@@ -157,7 +159,6 @@ export function createComment(locationId, text) {
         showMessageWithTimeout("success", false, "Comment placed!", 2500)
       );
       dispatch(fetchLocationById(locationId));
-
     }
   };
 }
