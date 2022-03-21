@@ -72,8 +72,8 @@ const DetailsPage = () => {
       {/* <h3>{description}</h3>
       <img src={image} alt={name} width={600} /> */}
 
-      <h3>{description}</h3>
-      <img src={image} alt={name} width={600} />
+      {/* <h3>{description}</h3> */}
+      {/* <img src={image} alt={name} width={600} /> */}
       <div>
         <br />
         <CommentForm />
