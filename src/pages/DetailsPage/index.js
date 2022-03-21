@@ -91,7 +91,7 @@ const DetailsPage = () => {
             );
           })}
         <div>
-          <p>🖤 - {dislikes}</p>
+          <p>👎 - {dislikes}</p>
           <button
             onClick={() => {
               dispatch(updateDislikes(id, dislikes + 1));
