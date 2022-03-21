@@ -50,11 +50,10 @@ const NewExperience = () => {
 
   if (!user) return <h2>Loading...</h2>;
   return (
-
-   
-
     <div>
-      <h1>NEW BAD EXPERIENCE</h1>
+      <h1 style={{ textAlign: "center" }}>
+        NEW BAD EXPERIENCE! SHOULD BE SHITTY!
+      </h1>
       <form
         onSubmit={handleSubmitExperience}
         style={{
@@ -77,6 +76,25 @@ const NewExperience = () => {
           type="text"
         ></input>
         <img src={image} alt={""} width={300} />
+        {/* <input type=“file” onChange={uploadImage} />
+<div>
+          <img
+            src={
+              image
+                ? image
+                : “https://clippingpathgreat.com/wp-content/uploads/2021/04/upload-files.jpg”
+            }
+            alt=“Upload”
+            style={{ width: 200 }}
+          />
+          {image ? (
+            <p style={{ fontSize: 20, color: “white” }}>
+              Succesfully uploaded!
+            </p>
+          ) : (
+            “”
+          )}
+        </div> */}
 
         <label>DESCRIPTION:</label>
         <textarea
@@ -92,10 +110,10 @@ const NewExperience = () => {
         ></textarea>
         <button type="submit"> SHARE YOUR SHITTY EXPERIENCE HERE</button>
       </form>
-      <div style={{ margin: "0px" }}>
+      <div style={{ marginRight: "100%" }}>
         <CreateMarker />
-        <button onClick={confirmLocation}>Confirm Selection</button>
       </div>
+      <button onClick={confirmLocation}>Confirm Selection</button>
     </div>
   );
 };
