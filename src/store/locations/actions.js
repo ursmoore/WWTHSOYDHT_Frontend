@@ -118,3 +118,11 @@ export function newExperiencePosted(
     }
   };
 }
+
+// //GET ONCLICK
+export function onClickMarker(latlng) {
+  return {
+    type: "location/makeOnClickMarker",
+    payload: { latlng },
+  };
+}

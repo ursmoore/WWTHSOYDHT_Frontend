@@ -1,6 +1,7 @@
 const initialState = {
   locations: [],
   locationDetails: null,
+  onClickMarker: {},
 };
 
 export default function reducer(state = initialState, action) {
@@ -31,12 +32,18 @@ export default function reducer(state = initialState, action) {
     }
 
     case "location/postNewExperience": {
-      console.log("what is payload", action.payload);
+      // console.log("what is payload", action.payload);
       return {
         ...state,
       };
     }
 
+    case "location/makeOnClickMarker": {
+      return {
+        ...state,
+        onClickMarker: action.payload,
+      };
+    }
     default: {
       return state;
     }
