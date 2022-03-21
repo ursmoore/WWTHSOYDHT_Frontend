@@ -24,7 +24,7 @@ export default function Reviews() {
   return (
     <div className="review">
       {myLocation.length < 1
-        ? "Loading"
+        ? "No images"
         : myLocation.map((loc) => {
             return (
               <div key={loc.locationId}>
