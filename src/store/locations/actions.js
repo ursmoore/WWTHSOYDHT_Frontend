@@ -127,6 +127,15 @@ export function newExperiencePosted(
   };
 }
 
+
+// //GET ONCLICK
+export function onClickMarker(latlng) {
+  return {
+    type: "location/makeOnClickMarker",
+    payload: { latlng },
+    
+    
+    
 //GET COMMENTS
 export function getComments(id) {
   return async function thunk(dispatch, getState) {
@@ -180,5 +189,6 @@ export function deletePost(id) {
     } catch (error) {
       console.log(error);
     }
+
   };
 }

@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import { useDispatch } from "react-redux";
+import { onClickMarker } from "../../store/locations/actions";
 
 const MapHandler = () => {
+  const dispatch = useDispatch();
   const map = useMapEvents({
-    click: (e) => console.log(e.latlng),
+    // click: (e) => console.log(e.latlng),
+    click: (e) => dispatch(onClickMarker(e.latlng)),
   });
+
   return null;
 };
 
